@@ -52,8 +52,13 @@ def log_deleted_booking(db, booking):
 
 
 @app.post("/bookings/", response_model=schemas.Booking)
-def create_booking(booking: schemas.BookingCreate, db: Session = Depends(get_db)):
-    db_booking = models.Booking(**booking.dict())
+def create_booking(
+    booking: schemas.BookingCreate,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_user)
+):
+    booking_data = booking.dict()
+    db_booking = models.Booking(**booking_data, user_id=current_user.id)
     db.add(db_booking)
     db.commit()
     db.refresh(db_booking)

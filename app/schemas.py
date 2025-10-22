@@ -80,6 +80,17 @@ class UserUpdate(BaseModel):
     phone: str | None = None
     is_admin: bool | None = None             
 
+class CurrentUser(BaseModel):
+    id: int
+    name: str
+    surname: str
+    email: str
+    phone: str
+    is_admin: bool
+
+    class Config:
+        from_attributes = True
+
 class DeletedUser(BaseModel):
     id: int
     user_id: int
@@ -99,8 +110,6 @@ class BookingCreate(BaseModel):
     people: int = Field(..., gt=0)
     info_message: str | None = None
     
-    user_id: int
-    
     @field_validator("date_time")
     @classmethod
     def date_must_be_in_future(cls, value):
@@ -113,7 +122,7 @@ class Booking(BaseModel):
     id: int
     date_time: datetime
     people: int
-    info_message: str
+    info_message: str | None = None
     user_id: int
 
     class Config:

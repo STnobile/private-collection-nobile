@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const Hero = ({ ctaHref = '#visit-plans' }) => {
+const Hero = ({ ctaHref = '#visit-plans', ctaLabel = 'Plan your visit' }) => {
   const isInternalRoute = ctaHref.startsWith('/')
   const CtaComponent = isInternalRoute ? Link : 'a'
   const ctaProps = isInternalRoute ? { to: ctaHref } : { href: ctaHref }
@@ -16,7 +16,7 @@ const Hero = ({ ctaHref = '#visit-plans' }) => {
             and community.
           </p>
           <CtaComponent className="hero-cta" {...ctaProps}>
-            Plan your visit
+            {ctaLabel}
           </CtaComponent>
         </div>
       </div>

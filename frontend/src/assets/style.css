@@ -133,6 +133,22 @@ nav {
     transition: .3s;
 }
 
+.nav-links .nav-logout {
+    background: transparent;
+    border: 1px solid rgba(6, 94, 6, 0.4);
+    border-radius: 999px;
+    padding: 8px 18px;
+    font-weight: 600;
+    color: rgba(6, 94, 6, 0.91);
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.nav-links .nav-logout:hover {
+    background: rgba(183, 136, 16, 0.2);
+    color: rgb(85, 107, 47);
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -419,6 +435,10 @@ footer p {
     transition: transform 0.35s ease, filter 0.35s ease;
 }
 
+.zoomable-image {
+    cursor: zoom-in;
+}
+
 .gallery-card img:hover {
     transform: scale(1.05);
 }
@@ -515,6 +535,7 @@ footer p {
     border-radius: 24px;
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
     margin-bottom: 1.5rem;
+    cursor: zoom-out;
 }
 
 .gallery-zoom-overlay p {
@@ -665,6 +686,11 @@ footer p {
     .nav-links li a {
         width: 100%;
         padding: 12px 0;
+    }
+
+    .nav-links .nav-logout {
+        width: 100%;
+        margin-top: 0.6rem;
     }
 }
 
@@ -950,4 +976,276 @@ footer p {
     .contact-form input {
         width: 100%;
     }
+}
+
+.page-spinner {
+    padding: 2rem;
+    text-align: center;
+    color: rgba(85, 107, 47, 0.8);
+    font-weight: 600;
+}
+
+/* auth pages */
+.auth-page {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(2rem, 4vw, 4rem) 1.5rem;
+    background: linear-gradient(180deg, #fff9f1 0%, #f3edd9 100%);
+}
+
+.auth-card {
+    max-width: 420px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 32px;
+    padding: clamp(2rem, 4vw, 3rem);
+    box-shadow: 0 26px 48px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.auth-card h1 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: rgb(43, 56, 23);
+}
+
+.auth-subtitle {
+    color: #4a4a4a;
+    margin-bottom: 1.5rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.auth-form label {
+    font-weight: 600;
+    color: rgb(85, 107, 47);
+}
+
+.auth-form input,
+.auth-form textarea {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.auth-submit {
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 999px;
+    padding: 0.85rem 1.5rem;
+    background: rgb(85, 107, 47);
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.auth-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 28px rgba(0, 0, 0, 0.18);
+}
+
+.auth-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.auth-error,
+.auth-success {
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.auth-error {
+    background: rgba(193, 69, 69, 0.12);
+    color: rgb(148, 30, 30);
+    border: 1px solid rgba(148, 30, 30, 0.2);
+}
+
+.auth-success {
+    background: rgba(85, 107, 47, 0.12);
+    color: rgb(46, 58, 26);
+    border: 1px solid rgba(46, 58, 26, 0.2);
+}
+
+.auth-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #4a4a4a;
+}
+
+.auth-footer a {
+    color: rgb(183, 136, 16);
+    font-weight: 600;
+}
+
+/* bookings */
+.bookings-page {
+    background: #fffdf7;
+}
+
+.bookings-hero {
+    padding-bottom: 0;
+}
+
+.bookings-layout {
+    display: grid;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .bookings-layout {
+        grid-template-columns: 1.1fr 1fr;
+        align-items: start;
+    }
+}
+
+.booking-form-card,
+.booking-list-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 28px;
+    padding: clamp(1.8rem, 3vw, 2.6rem);
+    box-shadow: 0 24px 42px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.booking-form-subtitle {
+    color: #5a5a5a;
+    margin-bottom: 1.5rem;
+}
+
+.booking-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.booking-form label {
+    font-weight: 600;
+    color: rgb(85, 107, 47);
+}
+
+.booking-form input,
+.booking-form textarea {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.booking-form textarea {
+    resize: vertical;
+}
+
+.booking-list {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 1rem;
+}
+
+.booking-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.2rem 1rem;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.booking-item h3 {
+    margin: 0 0 0.35rem;
+}
+
+.booking-item button {
+    align-self: center;
+    border: none;
+    background: rgba(193, 69, 69, 0.12);
+    color: rgb(148, 30, 30);
+    border-radius: 999px;
+    padding: 0.5rem 1.1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.booking-item button:hover {
+    background: rgba(193, 69, 69, 0.2);
+}
+
+.booking-note {
+    margin: 0.4rem 0 0;
+    color: #5a5a5a;
+}
+
+.booking-empty-state {
+    margin-top: 1.5rem;
+    color: #5a5a5a;
+}
+
+/* admin dashboard */
+.admin-page {
+    background: #f5f1e4;
+}
+
+.admin-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+@media (min-width: 992px) {
+    .admin-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.admin-stats-card,
+.admin-list-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 1.8rem;
+    box-shadow: 0 20px 36px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.admin-stats-card ul,
+.admin-list-card ul {
+    list-style: none;
+    margin: 1.2rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+}
+
+.admin-stats-card li,
+.admin-list-card li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 0.4rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.admin-list-card li:last-child,
+.admin-stats-card li:last-child {
+    border-bottom: none;
+}
+
+.admin-list-card li span {
+    display: block;
+    color: #5a5a5a;
 }

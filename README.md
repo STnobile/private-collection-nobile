@@ -62,3 +62,28 @@ venv/bin/python -m uvicorn app.main:app --reload
 ```
 
 On startup, the application auto-creates database tables (including the new `refresh_tokens` table). Restart Uvicorn after pulling updates to ensure migrations are applied.
+
+## Frontend (React)
+
+The `frontend/` directory contains the Vite + React client for visitor bookings and admin dashboards.
+
+1. Install dependencies (Node 20.19+ recommended):
+   ```bash
+   cd frontend
+   npm install
+   ```
+2. Create a `.env` file and point the app at your FastAPI server:
+   ```bash
+   echo "VITE_API_BASE_URL=http://127.0.0.1:8000" > .env
+   ```
+3. Start the dev server:
+   ```bash
+   npm run dev
+   ```
+4. Build for production:
+   ```bash
+   npm run build
+   npm run preview
+   ```
+
+The client automatically injects the stored access token on every request and refreshes it when a 401 is received. Logout clears both tokens and cached profile data.
