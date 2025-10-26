@@ -11,6 +11,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Bookings from './pages/Bookings'
 import AdminDashboard from './pages/AdminDashboard'
+import Account from './pages/Account'
 
 function App() {
   return (
@@ -44,6 +45,17 @@ function App() {
             <ProtectedRoute>
               <>
                 <Bookings />
+                <Footer />
+              </>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/account"
+          element={
+            <ProtectedRoute>
+              <>
+                <Account />
                 <Footer />
               </>
             </ProtectedRoute>

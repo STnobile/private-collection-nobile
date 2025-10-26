@@ -7,6 +7,7 @@ from app.database import get_db
 from app.auth.dependencies import get_current_admin_user, admin_required
 from app.auth.hashing import get_password_hash
 from typing import List
+import json
 
 router = APIRouter(
     prefix="/admin",
@@ -173,6 +174,8 @@ def update_any_booking(
         raise HTTPException(status_code=404, detail="Booking not found")
 
     for key, value in booking_update.dict(exclude_unset=True).items():
+        if key == "guest_contacts":
+            value = json.dumps(value) if value else None
         setattr(booking, key, value)
 
     db.commit()
@@ -198,6 +201,74 @@ def get_admin_statistics(
         "deleted_users": deleted_users,
         "deleted_bookings": deleted_bookings
     }
+
+
+@router.get("/booking-update-requests", response_model=List[schemas.BookingUpdateRequest])
+def list_booking_update_requests(
+    status: str | None = None,
+    db: Session = Depends(get_db),
+    current_admin: models.User = Depends(get_current_admin_user)
+):
+    query = db.query(models.BookingUpdateRequest)
+    if status:
+        query = query.filter(models.BookingUpdateRequest.status == status)
+    return query.order_by(models.BookingUpdateRequest.created_at.desc()).all()
+
+
+@router.get("/booking-update-requests/{request_id}", response_model=schemas.BookingUpdateRequest)
+def get_booking_update_request(
+    request_id: int,
+    db: Session = Depends(get_db),
+    current_admin: models.User = Depends(get_current_admin_user)
+):
+    request = db.query(models.BookingUpdateRequest).filter(models.BookingUpdateRequest.id == request_id).first()
+    if not request:
+        raise HTTPException(status_code=404, detail="Booking update request not found")
+    return request
+
+
+@router.put("/booking-update-requests/{request_id}", response_model=schemas.BookingUpdateRequest)
+def resolve_booking_update_request(
+    request_id: int,
+    decision: schemas.BookingUpdateDecision,
+    db: Session = Depends(get_db),
+    current_admin: models.User = Depends(get_current_admin_user)
+):
+    update_request = (
+        db.query(models.BookingUpdateRequest)
+        .filter(models.BookingUpdateRequest.id == request_id)
+        .first()
+    )
+
+    if not update_request:
+        raise HTTPException(status_code=404, detail="Booking update request not found")
+
+    if update_request.status != "pending":
+        raise HTTPException(status_code=400, detail="Request has already been processed")
+
+    if decision.status == "approved":
+        booking = (
+            db.query(models.Booking)
+            .filter(models.Booking.id == update_request.booking_id)
+            .first()
+        )
+        if not booking:
+            raise HTTPException(status_code=404, detail="Associated booking not found")
+
+        if update_request.requested_date_time:
+            booking.date_time = update_request.requested_date_time
+        if update_request.requested_people:
+            booking.people = update_request.requested_people
+        if update_request.requested_info_message is not None:
+            booking.info_message = update_request.requested_info_message
+
+    update_request.status = decision.status
+    update_request.admin_note = decision.admin_note
+    update_request.processed_at = datetime.datetime.utcnow()
+
+    db.commit()
+    db.refresh(update_request)
+    return update_request
 
 @router.get("/trends")
 def get_trends(

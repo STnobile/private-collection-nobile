@@ -17,6 +17,9 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
     bookings = relationship("Booking", back_populates="user")
+    booking_update_requests = relationship(
+        "BookingUpdateRequest", back_populates="user", cascade="all, delete-orphan"
+    )
 
 
 class Booking(Base):
@@ -28,8 +31,13 @@ class Booking(Base):
     info_message = Column(String)
     user_id = Column(Integer, ForeignKey("users.id"))
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    experience_type = Column(String, nullable=False, default="guided_tour")
+    guest_contacts = Column(String)
 
     user = relationship("User", back_populates="bookings")
+    update_requests = relationship(
+        "BookingUpdateRequest", back_populates="booking", cascade="all, delete-orphan"
+    )
  
     
 class DeletedBooking(Base):
@@ -72,3 +80,23 @@ class RefreshToken(Base):
     revoked = Column(Boolean, default=False, nullable=False)
 
     user = relationship("User")
+
+
+class BookingUpdateRequest(Base):
+    __tablename__ = "booking_update_requests"
+
+    id = Column(Integer, primary_key=True, index=True)
+    booking_id = Column(Integer, ForeignKey("bookings.id"), nullable=False, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=False, index=True)
+    requested_date_time = Column(DateTime)
+    requested_people = Column(Integer)
+    requested_info_message = Column(String)
+    note = Column(String)
+    status = Column(String, default="pending", nullable=False)
+    admin_note = Column(String)
+    created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
+    processed_at = Column(DateTime)
+
+    booking = relationship("Booking", back_populates="update_requests")
+    user = relationship("User", back_populates="booking_update_requests")

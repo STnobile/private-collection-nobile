@@ -32,7 +32,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
 def get_my_profile(current_user: models.User = Depends(get_current_user)):
     return current_user
 
-@router.get("/users/{user_id}/bookings", response_model=List[schemas.Booking])
+@router.get("/users/{user_id:int}/bookings", response_model=List[schemas.Booking])
 def get_user_bookings(user_id: int, db: Session = Depends(get_db)):
     bookings = db.query(models.Booking).filter(models.Booking.user_id == user_id).all()
     return bookings
@@ -73,7 +73,7 @@ def get_my_bookings(
     return bookings
 
 
-@router.get("/users/{user_id}", response_model=schemas.User)
+@router.get("/users/{user_id:int}", response_model=schemas.User)
 def read_user(
     user_id: int,
     db: Session = Depends(get_db),

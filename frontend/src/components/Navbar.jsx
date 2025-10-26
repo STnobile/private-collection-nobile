@@ -27,6 +27,7 @@ const Navbar = () => {
   const authLinks = isAuthenticated
     ? [
         { to: '/bookings', label: 'My Bookings' },
+        { to: '/account', label: 'Account' },
         ...(isAdmin ? [{ to: '/admin', label: 'Admin' }] : []),
       ]
     : [
