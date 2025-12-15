@@ -1,0 +1,621 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,300&display=swap');
+
+
+body {
+    color: rgba(245, 245, 245, 0.777);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+
+.hero{
+    height: 75vh;
+    width: 50wh;
+    background-image: url(../images/hero3.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid rgb(218, 165, 32);
+
+}
+
+h5 { 
+    color: black;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.logo{
+     padding: 10px 20px;
+     font-size: 40px;
+     color: rgb(85, 107, 47);
+     font-weight: bold;
+    
+}
+    
+span{
+    color: rgb(183, 136, 16);
+    font-weight: bold;
+}
+
+.h5title {
+    color: rgb(255, 127, 90);
+    font-weight: bold;
+}
+
+/* navbar starts here */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-left: 4%;
+    padding-right: 10%;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 10px 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgba(6, 94, 6, 0.91);
+    font-weight: bold;
+}
+
+
+ 
+nav ul li a:hover  {
+    color: rgb(183, 136, 16);
+    transition: .3s;
+}
+
+.active {
+    color: rgb(183, 136, 16);
+}
+
+
+@media screen and (min-width: 300px) and (max-width:800px){
+
+    .logo{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-size: 30px;
+    }
+    
+    nav {
+        display: grid;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+    }
+
+    nav ul li {
+        display:flex;
+        text-align: center;
+        align-items: center;
+    }
+    
+    }
+    
+
+/* Here start the story section */
+
+.bkg-history {
+    background: rgb(189, 183, 107);
+    width: 100%;
+    padding: 100px 0;
+}
+
+.box-image{
+    height: 500px;
+    width: 400px;
+    border-radius: 35px;
+    margin-bottom: 40px;
+}
+
+.bkg-history img {
+    height: 500px;
+    width: 400px;
+    border-radius: 35px;
+    margin-bottom: 40px;
+}
+
+.cont-st {
+    width: 100%;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.boxx {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60%; 
+    background-color: rgba(245, 245, 245, 0.924);
+    border-radius: 30px;
+    margin-bottom: 40px;
+}
+
+.box-one {
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+
+.cont-history {
+    text-align: center;
+    justify-content: center;
+    width: 70%;
+    padding: .5rem;
+}
+
+.cont-history h2 {
+    color:rgb(255, 127, 80) ;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: capitalize;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cont-history p{
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+}
+
+@media  screen and (min-width: 300px) and (max-width:800px) {
+    .bkg-history {
+        width: 100%;
+        padding: 100px 0;
+    }
+    
+    .box-image {
+        height: 250px;
+        width: 240px;
+    }
+
+    .bkg-history img {
+        height: 270px;
+        width: 250px;
+    }
+
+    .boxx {
+        width: 90%; 
+    }
+}
+
+
+/* here start the about us section */
+
+.service {
+    background-color: rgba(85, 107, 47, 0.896);
+    width: 100%;
+    padding:100px 0px;
+}
+
+.title h3 {
+     color: rgb(255, 127, 80);
+     font-size: 32px;
+     width: 100%;
+     margin: 30px auto;
+     text-align: center;
+}
+
+.box-card-service {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.card-service {
+    width: 300px;
+    height: 355px;
+    background: rgb(245, 245, 245);
+    position: relative;
+    margin: 15px;
+    border-radius: 30px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.card-service i {
+    font-size: 50px;
+    display: block;
+    text-align: center;
+    margin: 25px 0px;
+    color: rgb(255, 127, 80);
+}
+
+.footer-h4 { 
+    color: rgb(0, 0, 0);
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.cont-service p{
+    color: rgb(80, 78, 78);
+    margin-bottom: 25px;
+    font-size: 15px;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+/* footer start here */
+
+footer{
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-color: rgb(255, 127, 80);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+footer p {
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.social {
+    display: flex;
+}
+
+.social a {
+    width: 50px;
+    height: 50px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background: rgb(85, 107, 47);
+    border-radius: 50%;
+    margin: 22px 10px;
+    color: rgb(255, 251, 251);
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.social a:hover{
+    transform: scale(1.3);
+    cursor: pointer;
+
+}
+
+
+@media screen and (min-width:300px) and (max-width:800px) {
+    footer p {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+    .footer-h4 { 
+        margin: 0.8rem;
+        padding: 0.5rem;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+    
+}
+/* gallery start here */
+
+.container {
+    width: 100%;
+    max-width: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container .heading  {
+    width: 50%;
+    padding-bottom: 50px;
+}
+
+.container .heading h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(85, 107, 47);
+    border-bottom: 3px solid rgb(85, 107, 47); 
+    padding-bottom: 10px;   
+}
+.container .heading h3 span {
+    font-weight: 100;
+}
+
+.container .box-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container .box-img .col {
+    display: flex;
+    flex-direction: column;
+    width: 32.5%;
+}
+
+.container .box-img .col img{
+    width: 100%;
+    padding-bottom: 15px;
+    border-radius: 10px;
+}
+.container .box-img .col video {
+    width: 100%;
+    padding-bottom: 15px;
+    border-radius: 10px;
+}
+
+@media only screen and (max-width:760px){
+    .container .box-img {
+        flex-direction: column;
+    }
+    .container .box-img .col {
+        width: 100%;
+    }
+    .container .box-img .col video {
+        height: 400px;
+    }
+}
+
+
+@media only screen and (max-width:643px){
+    .container .heading  {
+        width: 100%;
+    }
+    
+    .container .heading h3 {
+       font-size: 30px;
+}
+}
+
+@media screen and (min-width: 300px) and (max-width:800px) {
+    footer p {
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+    .footer-h4 { 
+        margin: 0.8rem;
+        padding: 0.5rem;
+        margin-bottom: 15px;
+        font-size: 18px;
+    }
+    
+}
+
+
+/* times section */
+
+#times {
+    background-image: url("../images/panorama.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    overflow: hidden;
+}
+#times div {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0, 0.6);
+    width: 20%;
+    height: 300px;
+    float: left;
+    padding: 30px 0 0 10px;
+    text-align: center;
+    border: 2px solid rgb(255, 251, 251);
+    box-sizing: border-box;
+}
+
+#times h2 {
+    color: rgb(255, 251, 251);
+    font-size: 18px;
+}
+
+#times h3{
+    font-size: 15px;
+}
+
+
+@media screen and (max-width: 1200px) {
+    #times div {
+        width: 100%;
+        clear: both;
+        height: 200px;
+        padding: 0;
+    }
+}
+
+/* section contact start here */
+
+.contact {
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact p {
+    color: rgb(85, 107, 47);
+    position: absolute;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+
+.box-card-service {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.card-box {
+    width: 400px;
+    height: 455px;
+    background: rgb(245, 245, 245);
+    position: relative;
+    margin: 40px;
+    border-radius: 30px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.cont-contact p{
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+
+.mapwrapper {
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 30px;
+}
+
+
+iframe {
+    width: 100%;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .contact {
+    margin: 1rem;
+}
+    .contact p{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+    
+}
+@media screen and (min-width:300px) and (max-width:800px) {
+    .contact {
+        width: 90%; 
+        height: 200px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .contact p {
+        position: absolute;
+        font-size: 20px;
+        margin-bottom: 25px;
+    }
+}
+
+@media screen and (min-width: 300px) and (max-width:800px) {
+    .card-box {
+        width: 100%;
+        height: 480px;
+    }
+    .cont-contact p{
+     margin: .2rem;
+     padding: .2rem;
+    }
+}
+
+/* newsletter start here */
+
+.newsletter {
+    background: rgb(100, 149, 237);
+    margin: 5rem;
+    background-size: cover;
+    padding: 100px 40px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.376);
+}
+
+.newsletter p {
+    max-width: 600px;
+    margin: 40px auto;
+    font-size: 15px;
+    color: rgb(255, 251, 251);
+}
+
+.email-bt {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.email-bt i {
+    background: rgba(216, 193, 66, 0.703);
+    color: rgb(0, 0, 0);
+    width: 40px;
+    line-height: 40px;
+}
+
+.email-box .sub-email {
+    border: none;
+    outline: none;
+}
+
+.email-box {
+    width: 0px;
+}
+
+.email-box:hover > .email-box,.email-box:focus{
+    width: 260px;
+    padding: 0 10px;
+}
+
+.sub-email{
+    background: rgba(216, 193, 66, 0.703);
+    color: rgb(0, 0, 0);
+    padding: 0 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+@media  screen and (max-width: 1200px) {
+    .newsletter{
+        text-align: center;
+        justify-content: center;
+    }
+} 
+
+@media  screen and (min-width: 300px) and (max-width:800px) {
+
+    .newsletter{
+         margin: 0.5rem;
+         padding: 0.5rem;
+         text-align: center;
+        justify-content: center;
+    }
+
+    .newsletter p {
+        max-width: 200px;
+    }
+
+    .email-box{
+     width: 100px
+    }
+
+}
