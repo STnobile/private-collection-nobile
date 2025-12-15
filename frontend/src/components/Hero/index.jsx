@@ -1,26 +1,14 @@
 import { Link } from 'react-router-dom'
 
-const Hero = ({ ctaHref = '#visit-plans', ctaLabel = 'Plan your visit' }) => {
+const Hero = ({ ctaHref = '/home' }) => {
   const isInternalRoute = ctaHref.startsWith('/')
   const CtaComponent = isInternalRoute ? Link : 'a'
   const ctaProps = isInternalRoute ? { to: ctaHref } : { href: ctaHref }
 
   return (
-    <section className="hero hero-home">
-      <div className="hero-overlay">
-        <div className="hero-content">
-          <h1>Discover Museo Vini Nobile</h1>
-          <p>
-            Step inside our historic courtyard and explore the craftsmanship that shaped
-            Pachino&apos;s winemaking tradition. Every artifact tells a story of passion, land,
-            and community.
-          </p>
-          <CtaComponent className="hero-cta" {...ctaProps}>
-            {ctaLabel}
-          </CtaComponent>
-        </div>
-      </div>
-    </section>
+    <CtaComponent className="hero hero-home hero-link" aria-label="Enter Museo Vini Nobile" {...ctaProps}>
+      <span className="sr-only">Enter Museo Vini Nobile</span>
+    </CtaComponent>
   )
 }
 
